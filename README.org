@@ -1,0 +1,80 @@
+* Overview
+  - This repo is to capture all things related to my emacs stuff.
+
+* Background
+** History
+  - I've been a long-time emacs user since ~2004.  My first exposure
+    to emacs was via my first mentor/manager and I was always dazzled
+    by the multi-file management, and the interactive shell.  I
+    started with vi and tried to simulate the foregoing, but never got
+    the same effect.
+
+    - Then one year, as part of a New Year's resolution, I committed
+      and never looked back. When I learned, and even until recently,
+      I had the following guiding principles:
+
+      1) Minimize customizations to .emacs files.
+      2) Don't add extra packages.
+      3) Summarizing (1) and (2) don't customize beyond what is
+         shipped with standard bigbox distributions (RH/SuSE).
+
+      The major reason for these ideas was because a software product
+      we had worked on would often be deployed at remote sites without
+      any internet access.  Thus, dragging around .emacs files or
+      packages was not practical, and in a sense could actually be a
+      liability! Further, I did not want to develop too heavy a
+      dependence on more capable environments, and feel helpless when
+      working on customer systems.
+
+   - I had converted a number of people over time to the virtues of
+     emacs.  Every single person I had converted went like this:
+
+     1) One sit down, usually remote session, and going over some basics.
+     2) Close out the meeting saying
+        run: C-h t and follow it until the end.
+     3) Then let's talk.
+       
+     In 100% of the conversion cases all of the people were teaching
+     me things about emacs, and they found out very quickly I was far
+     from a power user, but simply proficient with some basics. That's
+     an awesome thing about emacs where it meets you where you are.
+     It will follow you to the nth degree, or in my case, < nth.
+
+** What About Now?
+   - I still live in emacs for:
+     - Development work.  Old habits die hard.  I do like intellij quite a bit, though.
+     - Note taking for:
+       - Meetings.
+       - Collaborative desktop sharing sessions.
+       - High stakes engagements with customers for efficient debugging +
+         note taking sessions.
+     - Documentation
+       - Active use of ox-jira-export, etc.
+
+
+   - Most recently I've been dipping back in and catching up with the
+     world on what's happened with emacs.
+
+     Also, this is in line with the Roosevelt line:
+
+     “We must all either wear out or rust out, every one of us. My
+     choice is to wear out.” 
+
+     I've been re-visiting lots of things, perhaps for another repo.
+     
+     Youtube and the web, as thy do, always reveals the craziness with
+     what is possible.  It's clear that I should make some effort to
+     learn some more, or at least re-calibrate what is considered
+     "minimum viable emacs." Things like packages, extending org-mode,
+     and adding IDE like features, all seem so normal now.
+
+   - *Warning:* Things which will be checked in here will be
+     considered very rudimentary by most people's standards and thus
+     high on the cringe.
+
+* Log
+** [2021-07-15 Thu]
+  - Initial check-ins of dirty/infant init.el files.
+  - Check-in of some info about what packages I have installed.
+
+    
