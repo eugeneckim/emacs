@@ -1,24 +1,34 @@
 ;; Main Stuff
-;;;; Visual
-(setq menu-bar-mode nil)
-(setq tool-bar-mode nil)
 
+;;; Mac Specific 
+(setq mac-option-modifier 'super)
+(setq mac-command-modifier 'meta)
+
+;;; Buffer Management
+(global-set-key "\C-x\C-b" 'electric-buffer-list)
+
+;;; Visual Stuff
+;;;; No Bars n stuff
+(menu-bar-mode -1)
+(tool-bar-mode -1)
+
+;;; Auth info stuff
 (setq epa-pinentry-mode 'loopback)
+(setq auth-sources '("~/.authinfo.gpg"))
+(setq auth-source-debug t)
 
+;;; Backup File Creation 
 (setq make-backup-files nil)
 (require 'backup-each-save)
 (add-hook 'after-save-hook 'backup-each-save)
 
-;; Package Stuff
+;;; Package Stuff
 (require 'use-package)
 
-;;; Repository
+;;;; Repository
 (require 'package)
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
-
-;;; Auth info stuff
-(setq auth-sources '("~/.authinfo.gpg"))
-(setq auth-source-debug t)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/")t)
+(package-initialize)
 
 ;;; Magit/Github style stuff
 (use-package magit)
@@ -41,25 +51,17 @@
 (add-hook 'after-init-hook 'global-company-mode)
 
 
-
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   '(magithub magit-gh-pulls magit solarized-theme dashboard company)))
+ '(package-selected-packages '(org-roam magithub use-package backup-each-save magit)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(comint-highlight-prompt ((t nil)))
- '(magit-diff-added ((t (:extend t :background "black" :foreground "#22aa22"))))
- '(magit-diff-base ((t (:extend t :background "black" :foreground "#aaaa11"))))
- '(magit-diff-base-highlight ((t (:extend t :background "black" :foreground "#aaaa11"))))
- '(magit-diff-context-highlight ((t (:extend t :background "black" :foreground "white"))))
- '(magit-section-highlight ((t (:extend t :background "black"))))
- '(region ((t (:extend t :background "brightcyan")))))
+ )
 
 
