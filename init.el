@@ -1,62 +1,29 @@
-;; Main Stuff
+;; Attempting to do bootstrapping of the file per:
+;;https://github.com/zamansky/using-emacs/blob/master/init.el
 
-;;; Mac Specific 
-(setq mac-option-modifier 'super)
-(setq mac-command-modifier 'meta)
+(setq max-lisp-eval-depth 10000)
+(setq max-specpdl-size 10000)
 
-;;; Buffer Management
-(global-set-key "\C-x\C-b" 'electric-buffer-list)
-
-;;; Visual Stuff
-;;;; No Bars n stuff
-(menu-bar-mode -1)
-(tool-bar-mode -1)
-
-;;; Auth info stuff
-(setq epa-pinentry-mode 'loopback)
-(setq auth-sources '("~/.authinfo.gpg"))
-(setq auth-source-debug t)
-
-;;; Backup File Creation 
-(setq make-backup-files nil)
-(require 'backup-each-save)
-(add-hook 'after-save-hook 'backup-each-save)
-
-;;; Package Stuff
-(require 'use-package)
-
-;;;; Repository
 (require 'package)
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/")t)
+
+(setq package-enable-at-startup nil)
+(add-to-list 'package-archives
+	     '("melpa" . "https://melpa.org/packages/"))
+ (add-to-list 'package-archives
+ 	     '("gnu" . "https://elpa.gnu.org/packages/"))
+;; (add-to-list 'package-archives
+;;	     '("melpa3" . "http://www.mirrorservice.org/sites/stable.melpa.org/packages/"))
 (package-initialize)
 
-;;; Magit/Github style stuff
-(use-package magit)
-(use-package ghub)
-(setq ghub-use-workaround-for-emacs-bug 'force)
-(setq magit-git-debug t)
-(setq password-cache nil)
-(setq magit-process-find-password-functions '(magit-process-password-auth-source))
+;; Bootstrap `use-package'
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
 
-(use-package magithub
-  :after magit
-  :ensure t
-  :config (magithub-feature-autoinject t))
+(org-babel-load-file (expand-file-name "~/.emacs.d/myinit.org"))
 
-;;;; magithub
-;;(require 'magit-gh-pulls)
-;;(add-hook 'magit-mode-hook 'turn-on-magit-gh-pulls)
+;; All the custom stuff that is auto-populated.
 
-;; General Hooks 'n' stuff
-(add-hook 'after-init-hook 'global-company-mode)
-
-
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages '(org-roam magithub use-package backup-each-save magit)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -64,4 +31,20 @@
  ;; If there is more than one, they won't work right.
  )
 
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-enabled-themes '(solarized-zenburn))
+ '(custom-safe-themes
+   '("51ec7bfa54adf5fff5d466248ea6431097f5a18224788d0bd7eb1257a4f7b773" default))
+ '(gnutls-algorithm-priority "normal:-vers-tls1.3")
+ '(org-roam-capture-immediate-template '(:immediate-finish t))
+ '(org-roam-capture-templates
+   '(("d" "default" plain #'org-roam-capture--get-point "%?" :file-name "%<%Y%m%d%H%M%S>-${slug}" :head "#+title: ${title}
+" :unnarrowed t)))
+ '(package-selected-packages
+   '(helm solarized-theme org-roam magithub use-package backup-each-save magit)))
 
