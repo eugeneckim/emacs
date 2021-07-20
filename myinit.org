@@ -17,20 +17,26 @@
 **  Reference
    - [[https://github.com/zamansky/using-emacs][zamansky github]] -> inspiration. for the myinit.org method.
    - [[https://youtu.be/EX9PKK3EMaw][zamansky video]]  -> video of the above.
-
+   - [[https://github.com/jwiegley/use-package][use-package]] -> I find myself here a lot learning about package stuff.
 * Systems  
 ** General Adjustments
  #+begin_src emacs-lisp
- ;;; Visual Stuff
- ;;;; No Bars n stuff
- (menu-bar-mode -1)
- (tool-bar-mode -1)
+   ;;; Visual Stuff
+   ;;;; No Bars n stuff
+   (menu-bar-mode -1)
+   (tool-bar-mode -1)
+   (setq inhibit-startup-screen t)
+   (setq ring-bell-function 'ignore)
  #+end_src
 ** Mac Specific
   - Found this one.  Has to do with keys.
   #+begin_src emacs-lisp
-  (setq mac-option-modifier 'super)
-  (setq mac-command-modifier 'meta)
+    (use-package ns-win
+      :config
+      (setq mac-function-modifier 'control)
+      (setq mac-option-modifier   'super)
+      (setq mac-command-modifier  'meta)
+    )
   #+end_src
 
 ** Buffer Management
@@ -52,7 +58,7 @@
       :config
       (setq make-backup-files nil)
       :hook
-      (add-hook 'after-save-hook 'backup-each-save)
+      (after-save backup-each-save)
     )
   #+end_src  
 ** Repositories
@@ -74,52 +80,78 @@
    #+end_src
 ** Org Roam
    - Very much a work in progress.
+   - [2021-07-19 Mon] Consider making some stuff in config under :custom
    #+begin_src emacs-lisp
-	;;; org-roam
-	;;;; v2 acknowledgement
-	(use-package org-roam
-	  :init
-	  (setq org-roam-v2-ack t)
-	  :config
+     ;;; org-roam
+     ;;;; v2 acknowledgement
+     (use-package org-roam
+       :ensure t
+       :init
+       (setq org-roam-v2-ack t)
 
-	  (setq org-roam-directory "~/org-roam")
-	  (setq org-roam-tag-sources '(prop all-directories))
+       :config
+       (org-roam-setup)
+       (setq org-roam-directory "~/org-roam")
+       (setq org-roam-tag-sources '(prop all-directories))
 
-	  ;; This option sounded interesting....
-	  (setq org-roam-completion-everywhere t)
+       ;; This option sounded interesting....
+       (setq org-roam-completion-everywhere t)
 
-	  ;; Should I have a separate area for hooks instead of mixed up?
-	  ;;(add-hook 'after-init-hook 'org-roam-mode)
+       ;; Should I have a separate area for hooks instead of mixed up?
+       ;;(add-hook 'after-init-hook 'org-roam-mode)
 
-	  ;; Make it such that saving updates the cache.
-	  (setq org-roam-db-update-method 'immediate)
+       ;; Make it such that saving updates the cache.
+       (setq org-roam-db-update-method 'immediate)
 
-	  ;;; Buffer modes.
-	  (setq org-roam-mode-sections
-	      (list #'org-roam-backlinks-section
-		    #'org-roam-reflinks-section
-		    #'org-roam-unlinked-references-section
-		    ))
+       ;;; Buffer modes.
+       (setq org-roam-mode-sections
+	   (list #'org-roam-backlinks-section
+		 #'org-roam-reflinks-section
+		 #'org-roam-unlinked-references-section
+		 ))
 
-	  ;;; Styling the buffer
-	  (add-to-list 'display-buffer-alist
-		       '(("\\*org-roam\\*"
-			(display-buffer-in-direction)
-			(direction . right)
-			(window-width . 0.33)
-			(window-height . fit-window-to-buffer))))
+       ;;; Styling the buffer
+       (add-to-list 'display-buffer-alist
+		    '(("\\*org-roam\\*"
+		     (display-buffer-in-direction)
+		     (direction . right)
+		     (window-width . 0.33)
+		     (window-height . fit-window-to-buffer))))
 
-	  ;;; Capture  tmplate information
-	  (setq org-roam-capture-templates
-	  '(("d" "default" plain "%?"
-	       :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org"
-				  "#+title: ${title}\n")
-	       :unnarrowed t))
-	  )
-	)
+       ;;; Dailies
+       (setq org-roam-dailies-directory "daily/")
+       (setq org-roam-dailies-capture-templates
+	     '(("d" "default" entry
+	      "* %?"
+	      :if-new (file+head "%<%Y-%m-%d>.org"
+				 "#+title: %<%Y-%m-%d>\n"))))
+
+       :bind (
+	      ("C-c n l" . org-roam-buffer-toggle)
+	      ("C-c n f" . org-roam-node-find)
+	      ("C-c n g" . org-roam-graph)
+	      ("C-c n i" . org-roam-node-insert)
+	      ("C-c n c" . org-roam-capture)
+	      ;; Nodes
+	      ("C-c n a" . org-roam-tag-add)
+	      ;; Dailies
+	      ("C-c n j" . org-roam-dailies-goto-today))
+
+       ;; Templating stuff
+       ;;; Capture template information
+       ;;setq org-roam-capture-templates
+       ;;     '(("d" "default" plain "%?"
+       ;;	:if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org"
+       ;;			   "#+title: ${title}\n")
+       ;;	:unnarrowed t)))
+       ;;(setq org-roam-capture-templates
+       ;;	'(("d" "default" plain "%?"
+       ;;	  :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org"
+       ;;			     "#+title: ${title}\n"))))
+
+     )
    #+end_src
 ** Magit
-
    #+begin_src emacs-lisp
      ;;; Magit/Github style stuff
      (use-package magit

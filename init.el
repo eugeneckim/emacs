@@ -7,7 +7,7 @@
 (require 'package)
 
 (setq package-enable-at-startup nil)
-(add-to-list 'package-archives
+ (add-to-list 'package-archives
 	     '("melpa" . "https://melpa.org/packages/"))
  (add-to-list 'package-archives
  	     '("gnu" . "https://elpa.gnu.org/packages/"))
@@ -43,8 +43,10 @@
  '(gnutls-algorithm-priority "normal:-vers-tls1.3")
  '(org-roam-capture-immediate-template '(:immediate-finish t))
  '(org-roam-capture-templates
-   '(("d" "default" plain #'org-roam-capture--get-point "%?" :file-name "%<%Y%m%d%H%M%S>-${slug}" :head "#+title: ${title}
-" :unnarrowed t)))
+   '(("d" "default" plain "%?" :if-new
+      (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}
+")
+      :unnarrowed t)))
  '(package-selected-packages
-   '(helm solarized-theme org-roam magithub use-package backup-each-save magit)))
+   '(fountain-mode helm solarized-theme org-roam magithub use-package backup-each-save magit)))
 
