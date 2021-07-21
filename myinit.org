@@ -3,7 +3,7 @@
 * Changelog
 ** TODO
 *** Things to learn
-   - [ ] Org-roam
+   - [X] Org-roam
    - [ ] Helm
    - [ ] Company
    - [ ] Key bindings
@@ -42,8 +42,9 @@
 ** Buffer Management
    - This is likely to go away when I figure out helm stuff.
    #+begin_src emacs-lisp
-;;; Buffer Management
-(global-set-key "\C-x\C-b" 'electric-buffer-list)
+     ;;; Buffer Management
+     ;;;; Let's try this.
+     (defalias 'list-buffers 'ibuffer)
    #+end_src
 ** Security
 #+begin_src emacs-lisp
@@ -89,9 +90,11 @@
        :init
        (setq org-roam-v2-ack t)
 
-       :config
-       (org-roam-setup)
+       :custom
        (setq org-roam-directory "~/org-roam")
+
+       :config
+
        (setq org-roam-tag-sources '(prop all-directories))
 
        ;; This option sounded interesting....
@@ -125,6 +128,8 @@
 	      "* %?"
 	      :if-new (file+head "%<%Y-%m-%d>.org"
 				 "#+title: %<%Y-%m-%d>\n"))))
+       
+       (org-roam-setup)
 
        :bind (
 	      ("C-c n l" . org-roam-buffer-toggle)
