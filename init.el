@@ -6,11 +6,17 @@
 
 (require 'package)
 
+;; Do this at the beginning because these files are all symlinked an
+;; vc'd.
+(setq vc-follow-symlinks nil)
+
+
+;; Some repo stuff before everything.
 (setq package-enable-at-startup nil)
  (add-to-list 'package-archives
 	     '("melpa" . "https://melpa.org/packages/"))
- (add-to-list 'package-archives
- 	     '("gnu" . "https://elpa.gnu.org/packages/"))
+;; (add-to-list 'package-archives
+;; 	     '("gnu" . "https://elpa.gnu.org/packages/"))
 ;; (add-to-list 'package-archives
 ;;	     '("melpa3" . "http://www.mirrorservice.org/sites/stable.melpa.org/packages/"))
 (package-initialize)
@@ -20,9 +26,12 @@
   (package-refresh-contents)
   (package-install 'use-package))
 
+;; Load our real init file
 (org-babel-load-file (expand-file-name "~/.emacs.d/myinit.org"))
 
-;; All the custom stuff that is auto-populated.
+
+;; All the custom stuff that is auto-populated.  Best not to touch,
+;; from what I understand.
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -48,5 +57,8 @@
 ")
       :unnarrowed t)))
  '(package-selected-packages
-   '(fountain-mode helm solarized-theme org-roam magithub use-package backup-each-save magit)))
+   '(auto-package-update ivy fountain-mode helm solarized-theme org-roam magithub use-package backup-each-save magit)))
+
+
+
 

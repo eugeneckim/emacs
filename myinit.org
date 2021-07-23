@@ -67,14 +67,26 @@
      (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/")t)
      (add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
    #+end_src
+** Packages
+   
+#+begin_src emacs-lisp
+  (use-package auto-package-update
+    :config
+    (auto-package-update-at-time "03:00")
+    (setq auto-package-update-delete-old-versions t)
+    (setq auto-package-update-hide-results t)
+    (auto-package-update-maybe))
+#+end_src
+   
 * Applications
 ** Org Mode
    - org-tempo gets our template stuff back like "<s" , etc.
      
    #+begin_src emacs-lisp
+     (add-hook 'org-mode-hook 'turn-on-flyspell)
      (use-package org-mode
        :hook
-       (add-hook 'org-mode-hook 'turn-on-flyspell)
+       (add-hook 'org-mode-hook #'turn-on-flyspell)
        :requires 
        (org-tempo)
      )
