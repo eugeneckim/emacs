@@ -50,6 +50,7 @@
  '(custom-safe-themes
    '("51ec7bfa54adf5fff5d466248ea6431097f5a18224788d0bd7eb1257a4f7b773" default))
  '(gnutls-algorithm-priority "normal:-vers-tls1.3")
+ '(ivy-mode t)
  '(org-roam-capture-immediate-template '(:immediate-finish t))
  '(org-roam-capture-templates
    '(("d" "default" plain "%?" :if-new
@@ -57,7 +58,7 @@
 ")
       :unnarrowed t)))
  '(package-selected-packages
-   '(auto-package-update ivy fountain-mode helm solarized-theme org-roam magithub use-package backup-each-save magit)))
+   '(vulpea counsel ox-hugo auto-package-update ivy fountain-mode helm solarized-theme org-roam magithub use-package backup-each-save magit)))
 
 
 

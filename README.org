@@ -71,10 +71,4 @@
    - *Warning:* Things which will be checked in here will be
      considered very rudimentary by most people's standards and thus
      high on the cringe.
-
-* Log
-** [2021-07-15 Thu]
-  - Initial check-ins of dirty/infant init.el files.
-  - Check-in of some info about what packages I have installed.
-
     

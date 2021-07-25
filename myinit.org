@@ -1,23 +1,23 @@
 #+STARTUP: overview 
 #+PROPERTY: header-args :comments yes :results silent
 * Changelog
-** TODO
 *** Things to learn
    - [X] Org-roam
-   - [ ] Helm
+   - [ ] Ivy
    - [ ] Company
-   - [ ] Key bindings
+   - [ ] Key bindings...
 
 ** [2021-07-18 Sun]
    - New file which is self-documenting.  Let's try this out for now.
    - Updated some things to do use-package.
      - Update stuff to all use that.
        - Have a basic understanding now.
-     
+
 **  Reference
    - [[https://github.com/zamansky/using-emacs][zamansky github]] -> inspiration. for the myinit.org method.
    - [[https://youtu.be/EX9PKK3EMaw][zamansky video]]  -> video of the above.
    - [[https://github.com/jwiegley/use-package][use-package]] -> I find myself here a lot learning about package stuff.
+
 * Systems  
 ** General Adjustments
  #+begin_src emacs-lisp
@@ -83,8 +83,8 @@
    - org-tempo gets our template stuff back like "<s" , etc.
      
    #+begin_src emacs-lisp
-     (add-hook 'org-mode-hook 'turn-on-flyspell)
-     (use-package org-mode
+     ;;(add-hook 'org-mode-hook 'turn-on-flyspell)
+     (use-package org
        :hook
        (add-hook 'org-mode-hook #'turn-on-flyspell)
        :requires 
@@ -168,6 +168,19 @@
 
      )
    #+end_src
+*** Vulpea
+    - random package used to bring to the table new functions.
+      #+begin_src emacs-lisp
+	(use-package vulpea
+	  :ensure t)
+      #+end_src
+** Ox-Hugo
+   #+begin_src emacs-lisp
+	  (use-package ox-hugo
+	    :ensure t
+	    :after ox
+     )
+   #+end_src 
 ** Magit
    #+begin_src emacs-lisp
      ;;; Magit/Github style stuff
@@ -191,4 +204,21 @@
 
 
    #+end_src
+** Ivy Mode
+   - [2021-07-23 Fri] - Trying out ivy.  Using the following as reference: [[https://writequit.org/denver-emacs/presentations/2017-04-11-ivy.html][Writequit Write-up]]
+     - Per the above docs
+       =ivy-use-virtual-buffers=
+         Add recent files and bookmarks to the ivy-switch-buffer
+       =ivy-count-format=
+         Displays the current and total number in the collection in the promp
+
+     #+begin_src emacs-lisp
+       (use-package ivy
+	 :demand
+	 :config
+	 (setq ivy-use-virtual-buffers t
+	       ivy-count-format "%d/%d "))
+
+
+     #+end_src
 
