@@ -91,6 +91,13 @@
        (org-tempo)
      )
    #+end_src
+** Fountain Mode
+   - Some adjustments to fountain mode.  Used for screenwriting.
+#+begin_src emacs-lisp
+
+#+end_src
+     
+
 ** Org Roam
    - Very much a work in progress.
    - [2021-07-19 Mon] Consider making some stuff in config under :custom
