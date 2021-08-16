@@ -85,10 +85,14 @@
    #+begin_src emacs-lisp
      ;;(add-hook 'org-mode-hook 'turn-on-flyspell)
      (use-package org
+       :custom
+       (org-show-notification-handler 'message)
        :hook
        (add-hook 'org-mode-hook #'turn-on-flyspell)
        :requires 
        (org-tempo)
+
+
      )
    #+end_src
 ** Fountain Mode

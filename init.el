@@ -59,7 +59,7 @@
 ")
       :unnarrowed t)))
  '(package-selected-packages
-   '(vulpea counsel ox-hugo auto-package-update ivy fountain-mode helm solarized-theme org-roam magithub use-package backup-each-save magit)))
+   '(vulpea counsel ox-hugo auto-package-update ivy fountain-mode helm solarized-theme org-roam use-package backup-each-save magit)))
 
 
 
