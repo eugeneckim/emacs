@@ -28,6 +28,16 @@
    (setq inhibit-startup-screen t)
    (setq ring-bell-function 'ignore)
  #+end_src
+** OS
+   - This allows for shell execution paths to be equivalent to the
+     shell outside.
+    #+begin_src emacs-lisp
+   (use-package exec-path-from-shell
+      :commands
+      (exec-path-from-shell-initialize)
+   )
+    #+end_src
+
 ** Mac Specific
   - Found this one.  Has to do with keys.
   #+begin_src emacs-lisp
@@ -78,6 +88,7 @@
     (auto-package-update-maybe))
 #+end_src
    
+
 * Applications
 ** Org Mode
    - org-tempo gets our template stuff back like "<s" , etc.
@@ -85,14 +96,12 @@
    #+begin_src emacs-lisp
      ;;(add-hook 'org-mode-hook 'turn-on-flyspell)
      (use-package org
+       :init
+       (require 'org-tempo)
        :custom
        (org-show-notification-handler 'message)
        :hook
        (add-hook 'org-mode-hook #'turn-on-flyspell)
-       :requires 
-       (org-tempo)
-
-
      )
    #+end_src
 ** Fountain Mode
@@ -109,6 +118,7 @@
      ;;; org-roam
      ;;;; v2 acknowledgement
      (use-package org-roam
+       :after org
        :ensure t
        :init
        (setq org-roam-v2-ack t)
@@ -119,7 +129,7 @@
        :config
 
        (setq org-roam-tag-sources '(prop all-directories))
-
+  
        ;; This option sounded interesting....
        (setq org-roam-completion-everywhere t)
 
@@ -143,7 +153,6 @@
 		     (direction . right)
 		     (window-width . 0.33)
 		     (window-height . fit-window-to-buffer))))
-
        ;;; Dailies
        (setq org-roam-dailies-directory "daily/")
        (setq org-roam-dailies-capture-templates
@@ -151,7 +160,7 @@
 	      "* %?"
 	      :if-new (file+head "%<%Y-%m-%d>.org"
 				 "#+title: %<%Y-%m-%d>\n"))))
-       
+
        (org-roam-setup)
 
        :bind (

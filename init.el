@@ -10,6 +10,9 @@
 ;; vc'd.
 (setq vc-follow-symlinks nil)
 
+(setq make-backup-files nil)
+
+
 
 ;; Some repo stuff before everything.
 (setq package-enable-at-startup nil)
@@ -59,7 +62,7 @@
 ")
       :unnarrowed t)))
  '(package-selected-packages
-   '(vulpea counsel ox-hugo auto-package-update ivy fountain-mode helm solarized-theme org-roam use-package backup-each-save magit)))
+   '(exec-path-from-shell vulpea counsel ox-hugo auto-package-update ivy fountain-mode helm solarized-theme org-roam use-package backup-each-save magit)))
 
 
 
