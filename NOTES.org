@@ -1,0 +1,23 @@
+#+ATTR_HTML: :style margin-left: auto; margin-right: auto;
+[[sisyphus.jpeg]]
+
+* Org-Roam
+
+  [[https://www.orgroam.com/manual.html#Introduction][Org-Roam Manual]] -> Manual for org
+
+* Log
+
+** [2021-07-16 Fri]
+
+   - Started reading the documentation.
+
+
+
+     
+     
+  
+
+
+  
+
+  
