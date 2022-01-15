@@ -32,10 +32,10 @@
    - This allows for shell execution paths to be equivalent to the
      shell outside.
     #+begin_src emacs-lisp
-   (use-package exec-path-from-shell
-      :commands
-      (exec-path-from-shell-initialize)
-   )
+      (use-package exec-path-from-shell
+	 :config
+         (exec-path-from-shell-initialize)
+      )
     #+end_src
 
 ** Mac Specific
