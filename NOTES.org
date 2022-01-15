@@ -1,4 +1,4 @@
-#+ATTR_HTML: :style margin-left: auto; margin-right: auto;
+#+ATTR_HTML: :style margin-left: auto; margin-right: auto; :width 100px
 [[sisyphus.jpeg]]
 
 * Org-Roam
