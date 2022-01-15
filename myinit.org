@@ -1,5 +1,29 @@
 #+STARTUP: overview 
 #+PROPERTY: header-args :comments yes :results silent
+* Table of Contents                                               :TOC:QUOTE:
+#+BEGIN_QUOTE
+- [[#changelog][Changelog]]
+  - [[#2021-07-18-sun][[2021-07-18 Sun]]]
+  -  [[#reference][Reference]]
+- [[#systems][Systems]]
+  - [[#general-adjustments][General Adjustments]]
+  - [[#os][OS]]
+  - [[#mac-specific][Mac Specific]]
+  - [[#buffer-management][Buffer Management]]
+  - [[#security][Security]]
+  - [[#backup-files][Backup Files]]
+  - [[#repositories][Repositories]]
+  - [[#packages][Packages]]
+- [[#applications][Applications]]
+  - [[#org-mode][Org Mode]]
+  - [[#org-toc][Org TOC]]
+  - [[#fountain-mode][Fountain Mode]]
+  - [[#org-roam][Org Roam]]
+  - [[#ox-hugo][Ox-Hugo]]
+  - [[#magit][Magit]]
+  - [[#ivy-mode][Ivy Mode]]
+#+END_QUOTE
+
 * Changelog
 *** Things to learn
    - [X] Org-roam
@@ -104,6 +128,19 @@
        (add-hook 'org-mode-hook #'turn-on-flyspell)
      )
    #+end_src
+** Org TOC
+   - Auto-generated TOC.   
+   - Taken from: [[https://github.com/zzamboni/dot-emacs/blob/master/init.org][zzamboni dot emacs]]
+   #+begin_src emacs-lisp
+     (use-package toc-org
+       :after org
+       :hook
+       (org-mode . toc-org-enable))
+   #+end_src
+
+   
+
+
 ** Fountain Mode
    - Some adjustments to fountain mode.  Used for screenwriting.
 #+begin_src emacs-lisp

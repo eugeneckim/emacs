@@ -62,7 +62,7 @@
 ")
       :unnarrowed t)))
  '(package-selected-packages
-   '(exec-path-from-shell vulpea counsel ox-hugo auto-package-update ivy fountain-mode helm solarized-theme org-roam use-package backup-each-save magit)))
+   '(toc-org exec-path-from-shell vulpea counsel ox-hugo auto-package-update ivy fountain-mode helm solarized-theme org-roam use-package backup-each-save magit)))
 
 
 
