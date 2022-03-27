@@ -14,6 +14,9 @@
   - [[#backup-files][Backup Files]]
   - [[#repositories][Repositories]]
   - [[#packages][Packages]]
+- [[#development][Development]]
+  - [[#yaml][YAML]]
+  - [[#dot-mode][Dot Mode]]
 - [[#applications][Applications]]
   - [[#org-mode][Org Mode]]
   - [[#org-toc][Org TOC]]
@@ -112,7 +115,23 @@
     (auto-package-update-maybe))
 #+end_src
    
+* Development
+** YAML
+   #+begin_src emacs-lisp
+     (use-package yaml-mode)
+   #+end_src   
 
+** Dot Mode
+   - For graphviz stuff
+
+
+   #+begin_src emacs-lisp
+   (use-package graphviz-dot-mode
+  :ensure t
+  :config
+  (setq graphviz-dot-indent-width 4))
+
+   #+end_src
 * Applications
 ** Org Mode
    - org-tempo gets our template stuff back like "<s" , etc.
@@ -122,10 +141,15 @@
      (use-package org
        :init
        (require 'org-tempo)
+       (add-hook 'org-mode-hook 'turn-on-flyspell)
+       (setq org-todo-keywords
+	     '((sequence "TODO(t)" "WIP(w)" "|" "DONE(d)"))
+	     )
+
        :custom
        (org-show-notification-handler 'message)
-       :hook
-       (add-hook 'org-mode-hook #'turn-on-flyspell)
+       ;;:hook
+
      )
    #+end_src
 ** Org TOC
@@ -140,14 +164,12 @@
 
    
 
-
 ** Fountain Mode
    - Some adjustments to fountain mode.  Used for screenwriting.
 #+begin_src emacs-lisp
 
 #+end_src
      
-
 ** Org Roam
    - Very much a work in progress.
    - [2021-07-19 Mon] Consider making some stuff in config under :custom

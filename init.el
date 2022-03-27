@@ -62,8 +62,9 @@
 ")
       :unnarrowed t)))
  '(package-selected-packages
-   '(toc-org exec-path-from-shell vulpea counsel ox-hugo auto-package-update ivy fountain-mode helm solarized-theme org-roam use-package backup-each-save magit)))
+   '(yaml-mode graphviz-dot-mode titlecase toc-org exec-path-from-shell vulpea counsel ox-hugo auto-package-update ivy fountain-mode helm solarized-theme org-roam use-package backup-each-save magit)))
 
 
 
 
+(put 'downcase-region 'disabled nil)
