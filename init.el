@@ -54,7 +54,7 @@
    '("51ec7bfa54adf5fff5d466248ea6431097f5a18224788d0bd7eb1257a4f7b773" default))
  '(fountain-mode-hook '(visual-line-mode flyspell-mode))
  '(gnutls-algorithm-priority "normal:-vers-tls1.3")
- '(ivy-mode t)
+ '(ivy-mode nil)
  '(org-roam-capture-immediate-template '(:immediate-finish t))
  '(org-roam-capture-templates
    '(("d" "default" plain "%?" :if-new

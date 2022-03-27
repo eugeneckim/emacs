@@ -24,16 +24,10 @@
   - [[#org-roam][Org Roam]]
   - [[#ox-hugo][Ox-Hugo]]
   - [[#magit][Magit]]
-  - [[#ivy-mode][Ivy Mode]]
+  - [[#vertico--marginalia][Vertico / Marginalia]]
 #+END_QUOTE
 
 * Changelog
-*** Things to learn
-   - [X] Org-roam
-   - [ ] Ivy
-   - [ ] Company
-   - [ ] Key bindings...
-
 ** [2021-07-18 Sun]
    - New file which is self-documenting.  Let's try this out for now.
    - Updated some things to do use-package.
@@ -41,10 +35,10 @@
        - Have a basic understanding now.
 
 **  Reference
+   - [[https://github.com/jwiegley/use-package][use-package]]     -> I find myself here a lot learning about package stuff.
    - [[https://github.com/zamansky/using-emacs][zamansky github]] -> inspiration. for the myinit.org method.
+   - [[https://systemcrafters.cc/][system crafters]] -> crazy videos and information
    - [[https://youtu.be/EX9PKK3EMaw][zamansky video]]  -> video of the above.
-   - [[https://github.com/jwiegley/use-package][use-package]] -> I find myself here a lot learning about package stuff.
-
 * Systems  
 ** General Adjustments
  #+begin_src emacs-lisp
@@ -283,7 +277,31 @@
 
 
    #+end_src
-** Ivy Mode
+
+** Vertico / Marginalia
+- [2022-03-27 Sun] - Using Vertico as this seemed to be a good
+  compromise as ivy seemed just a bit too annoying.  Simple
+  configuration taken from here: [[https://systemcrafters.cc/emacs-tips/streamline-completions-with-vertico/][Reference]].
+
+#+begin_src emacs-lisp
+(use-package vertico
+  :ensure t
+  :init
+  (vertico-mode))
+#+end_src
+
+#+begin_src emacs-lisp
+  (use-package marginalia
+    :ensure t
+    :after vertico
+    :custom
+    (marginalia-annotators '(marginalia-annotators-heavy marginalia-annotators-light nil))
+    :init
+    (marginalia-mode))
+#+end_src
+
+** COMMENT Ivy Mode
+   - [2022-03-27 Sun] - Disabling it for now
    - [2021-07-23 Fri] - Trying out ivy.  Using the following as reference: [[https://writequit.org/denver-emacs/presentations/2017-04-11-ivy.html][Writequit Write-up]]
      - Per the above docs
        =ivy-use-virtual-buffers=
@@ -291,13 +309,11 @@
        =ivy-count-format=
          Displays the current and total number in the collection in the promp
 
-     #+begin_src emacs-lisp
+     #+begin_src emacs-lisp :noeval
        (use-package ivy
 	 :demand
 	 :config
 	 (setq ivy-use-virtual-buffers t
 	       ivy-count-format "%d/%d "))
-
-
      #+end_src
 
