@@ -62,7 +62,7 @@
 ")
       :unnarrowed t)))
  '(package-selected-packages
-   '(yaml-mode graphviz-dot-mode titlecase toc-org exec-path-from-shell vulpea counsel ox-hugo auto-package-update ivy fountain-mode helm solarized-theme org-roam use-package backup-each-save magit)))
+   '(ox-clip yaml-mode graphviz-dot-mode titlecase toc-org exec-path-from-shell vulpea counsel ox-hugo auto-package-update ivy fountain-mode helm solarized-theme org-roam use-package backup-each-save magit)))
 
 
 

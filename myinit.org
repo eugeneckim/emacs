@@ -17,6 +17,7 @@
 - [[#development][Development]]
   - [[#yaml][YAML]]
   - [[#dot-mode][Dot Mode]]
+  - [[#python][Python]]
 - [[#applications][Applications]]
   - [[#org-mode][Org Mode]]
   - [[#org-toc][Org TOC]]
@@ -126,6 +127,10 @@
   (setq graphviz-dot-indent-width 4))
 
    #+end_src
+** Python
+   
+
+   
 * Applications
 ** Org Mode
    - org-tempo gets our template stuff back like "<s" , etc.
@@ -139,9 +144,9 @@
        (setq org-todo-keywords
 	     '((sequence "TODO(t)" "WIP(w)" "|" "DONE(d)"))
 	     )
-
        :custom
        (org-show-notification-handler 'message)
+
        ;;:hook
 
      )
